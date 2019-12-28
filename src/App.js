@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 
 function App() {
+  // // const [state, setstate] = useState(initialState)
+  // useEffect(() => {
+  //  const random = fetch("/", {
+  //    method: "GET",
+  //     headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //  })
+  //   return () => {
+  //     //cleanup
+  //   };
+  // }, [])
+  useEffect(async () => {
+    const random = await fetch("http://localhost:8000", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const json = await random.json()
+    console.log(json)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Lets see if a fetch call works in the front-end
     </div>
   );
 }
