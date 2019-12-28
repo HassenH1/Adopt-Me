@@ -2,18 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 
 function App() {
-  // // const [state, setstate] = useState(initialState)
-  // useEffect(() => {
-  //  const random = fetch("/", {
-  //    method: "GET",
-  //     headers: {
-  //         "Content-Type": "application/json"
-  //       }
-  //  })
-  //   return () => {
-  //     //cleanup
-  //   };
-  // }, [])
+
   useEffect(async () => {
     const random = await fetch("http://localhost:8000", {
       method: "GET",
