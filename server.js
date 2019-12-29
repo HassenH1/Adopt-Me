@@ -27,10 +27,6 @@ fetch('https://api.petfinder.com/v2/animals?sort=random', {
   .then(json => res.send(json));
 })
 
-// app.get('/', (req,res) => {
-//   res.json("hitting in the front end inshallah")
-// })
- 
 app.listen(PORT, () => {
   console.log(`server running on ${PORT} port`)
 })

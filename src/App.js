@@ -22,8 +22,10 @@ function App() {
 
   return (
     <div className="App">
-      Lets see if a fetch call works in the front-end
-      <Random animals={data}/>
+      <div className="innerApp">
+        <h1>Pick Me!</h1>
+      <Random animals={data} />
+      </div>
     </div>
   );
 }

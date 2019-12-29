@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../App.css'
 
 export default function Random(props) {
   // const test = props.animals && props.animals[0]
@@ -13,27 +14,23 @@ export default function Random(props) {
   //   })
   //   : ""
 
-  const randomAnimals = props.animals.map((elem, i) => {
-    return (
-      <div key={i}>
-        <div>
-          {elem.photos.map((el, i) => {
-            return (
-              <img key={i} src={el.small} />
-            )
-          })}
-        </div>
-      </div>
-    )
-  })
+  // const randomAnimals = props.animals.map((elem, i) => {
+  //   return (
+  //     <div key={i}>
+  //       <div>
+  //         {elem.photos.map((el, i) => {
+  //           return (
+  //             <img key={i} src={el.small} />
+  //           )
+  //         })}
+  //       </div>
+  //     </div>
+  //   )
+  // })
   return (
-    <div>
-      {/* <h1>Testing Photos</h1> */}
-      {/* <div>{test}</div> */}
-      <hr />
-      <hr />
-      <hr />
-      {randomAnimals}
+    <div className="wrapper">
+      <p>Lets try this one more time</p>
+      {/* {randomAnimals} */}
     </div>
   )
 }
