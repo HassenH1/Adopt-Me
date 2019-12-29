@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <div className="innerApp">
-        <h1>Pick Me!</h1>
+        <h1 className="title">Pick Me!</h1>
       <Random animals={data} />
       </div>
     </div>

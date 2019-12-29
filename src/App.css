@@ -10,18 +10,28 @@
   height: 750px;
   margin: 0 auto;
   top: 50px;
+  border: 1px solid black;
 }
 
 .innerApp {
   position: relative;
   top: 50px;
 }
-/******************************************************/
+
+.title {
+  position: relative;
+  bottom: 20px;
+  font-family: 'Lobster', cursive;
+  color: salmon;
+}
+/*^^^^^^^^^^^^^^outside^^^^^^^^^^^^*/
 
 .wrapper {
   margin: 0 auto;
-  border: 1px solid rgb(249,241,241);
+  border: 1.8px solid rgb(249,241,241);
   height: 550px;
   width: 550px;
-  border-radius: 25px;
+  border-radius: 10px;
 }
+
+/****************inside*************/
