@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React, { useState } from 'react';
+// import { render } from 'react-dom';
 
 import Swipeable from 'react-swipy';
 
@@ -28,23 +28,21 @@ const actionsStyles = {
   marginTop: 12,
 };
 
-class Random extends Component {
-  state = {
-    cards: ['First', 'Second', 'Third'],
-  };
+const Random = () => {
+  // state = {
+  //   cards: ['First', 'Second', 'Third'],
+  // };
+  const [animals, setAnimals] = useState(["Hassen", "work", "please", "Im", "tired", "of", "Life"])
 
-  remove = () =>
-    this.setState(({ cards }) => ({
-      cards: cards.slice(1, cards.length),
-    }));
-
-  render() {
-    const { cards } = this.state;
+  const remove = () =>
+    setAnimals(( animals ) => (
+      animals.slice(1, animals.length)
+    ));
 
     return (
       <div style={appStyles}>
         <div style={wrapperStyles}>
-          {cards.length > 0 && (
+          {animals.length > 0 && (
             <div style={wrapperStyles}>
               <Swipeable
                 buttons={({ right, left }) => (
@@ -53,22 +51,21 @@ class Random extends Component {
                     <Button onClick={right}>Accept</Button>
                   </div>
                 )}
-                onAfterSwipe={this.remove}
+                onAfterSwipe={remove}
               >
-                <Card>{cards[0]}</Card>
+                <Card>{animals[0]}</Card>
               </Swipeable>
-              {cards.length > 1 && (
-                <Card zIndex={-1}>{cards[1]}</Card>
+              {animals.length > 1 && (
+                <Card zIndex={-1}>{animals[1]}</Card>
               )}
             </div>
           )}
-          {cards.length <= 1 && (
+          {animals.length <= 1 && (
             <Card zIndex={-2}>No more cards</Card>
           )}
         </div>
       </div>
     );
-  }
 }
 
 export default Random;
