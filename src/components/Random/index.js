@@ -8,8 +8,8 @@ const flexing = {
   display: "flex",
   justifyContent: "space-between",
   marginTop: 12,
-  position: "relative",
-  top: "35rem",
+  // position: "relative",
+  // top: "35rem",
 }
 
 export default function Random(props) {
@@ -39,16 +39,14 @@ export default function Random(props) {
   //   )
   // })
   const [cards, setCards] = useState(["hassen", "this", "world", "is", "Horrible"])
-  console.log(cards.length, "<------------------length")
   const remove = () => {
-    setCards(( cards ) => ({ cards: cards.slice(1, cards.length) }));
-    console.log(cards, "<---------------------------------cards")
+    setCards((cards) => (cards.slice(1, cards.length) ));
   }
   return (
     <div className="wrapper">
       {/* {randomAnimals} */}
       {cards.length > 0 && (
-        <div>
+        <div className="wrapper">
           <Swipeable
             buttons={({ right, left }) => (
               <div style={flexing}>

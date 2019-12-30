@@ -2,9 +2,9 @@ import React from "react";
 
 const cardStyles = {
   background: "whitesmoke",
-  borderRadius: 10,
-  width: "550px",
-  height: "500px",
+  borderRadius: "10px",
+  width: "548px",
+  height: "508px",
   cursor: "pointer",
   userSelect: "none",
   position: "absolute",
