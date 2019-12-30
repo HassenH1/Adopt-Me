@@ -2,7 +2,7 @@ import React from "react";
 
 const cardStyles = {
   background: "whitesmoke",
-  borderRadius: 3,
+  borderRadius: 10,
   width: "550px",
   height: "500px",
   cursor: "pointer",
@@ -12,7 +12,6 @@ const cardStyles = {
   alignItems: "center",
   justifyContent: "center",
   top: 40,
-  borderRadius: "10px"
 };
 
 const Card = ({ zIndex = 0, children }) => (

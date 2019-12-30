@@ -41,7 +41,8 @@ export default function Random(props) {
   const [cards, setCards] = useState(["hassen", "this", "world", "is", "Horrible"])
   console.log(cards.length, "<------------------length")
   const remove = () => {
-    setCards(({ cards }) => ({ cards: cards.slice(1, cards.length) }));
+    setCards(( cards ) => ({ cards: cards.slice(1, cards.length) }));
+    console.log(cards, "<---------------------------------cards")
   }
   return (
     <div className="wrapper">
