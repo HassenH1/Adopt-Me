@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 const cardStyles = {
-  background: "whitesmoke",
-  borderRadius: "10px",
-  width: "548px",
-  height: "508px",
-  cursor: "pointer",
-  userSelect: "none",
-  position: "absolute",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  top: 40,
+  background: 'whitesmoke',
+  borderRadius: 3,
+  width: '750px',
+  height: '750px',
+  cursor: 'pointer',
+  userSelect: 'none',
+  position: 'absolute',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  top: 0,
 };
 
 const Card = ({ zIndex = 0, children }) => (

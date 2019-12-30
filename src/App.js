@@ -1,33 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import Random from './components/Random'
-import './App.css';
+// import React, { Component } from 'react';
+// import { render } from 'react-dom';
 
-function App() {
-  const [data, setData] = useState([])
-  async function fetchAPI() {
-    const random = await fetch("http://localhost:8000", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const json = await random.json()
-    // console.log(json.animals)
-    setData(json.animals)
-  }
+// import Swipeable from 'react-swipy';
 
-  useEffect(() => {
-    fetchAPI()
-  }, [])
+import Random from './components/Random';
+// import Button from './components/Button';
 
+// const appStyles = {
+//   height: '100%',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   width: '100%',
+//   minHeight: '100vh',
+//   fontFamily: 'sans-serif',
+//   overflow: 'hidden',
+// };
+
+// const wrapperStyles = {
+//   position: 'relative',
+//   width: '750px',
+//   height: '750px',
+// };
+// const actionsStyles = {
+//   display: 'flex',
+//   justifyContent: 'space-between',
+//   marginTop: 12,
+// };
+
+// class App extends Component {
+//   state = {
+//     cards: ['First', 'Second', 'Third'],
+//   };
+
+//   remove = () =>
+//     this.setState(({ cards }) => ({
+//       cards: cards.slice(1, cards.length),
+//     }));
+
+//   render() {
+//     const { cards } = this.state;
+
+//     return (
+//       <div style={appStyles}>
+//         <div style={wrapperStyles}>
+//           {cards.length > 0 && (
+//             <div style={wrapperStyles}>
+//               <Swipeable
+//                 buttons={({ right, left }) => (
+//                   <div style={actionsStyles}>
+//                     <Button onClick={left}>Reject</Button>
+//                     <Button onClick={right}>Accept</Button>
+//                   </div>
+//                 )}
+//                 onAfterSwipe={this.remove}
+//               >
+//                 <Card>{cards[0]}</Card>
+//               </Swipeable>
+//               {cards.length > 1 && (
+//                 <Card zIndex={-1}>{cards[1]}</Card>
+//               )}
+//             </div>
+//           )}
+//           {cards.length <= 1 && (
+//             <Card zIndex={-2}>No more cards</Card>
+//           )}
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+import React from 'react'
+
+export default function App() {
   return (
-    <div className="App">
-      <div className="innerApp">
-        <h1 className="title">Pick Me!</h1>
-      <Random animals={data} />
-      </div>
+    <div>
+      <Random />
     </div>
-  );
+  )
 }
-
-export default App;
