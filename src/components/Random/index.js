@@ -8,8 +8,6 @@ const flexing = {
   display: "flex",
   justifyContent: "space-between",
   marginTop: 12,
-  // position: "relative",
-  // top: "35rem",
 }
 
 export default function Random(props) {
@@ -43,6 +41,7 @@ export default function Random(props) {
     setCards((cards) => (cards.slice(1, cards.length) ));
   }
   return (
+    <div>
     <div className="wrapper">
       {/* {randomAnimals} */}
       {cards.length > 0 && (
@@ -62,6 +61,7 @@ export default function Random(props) {
         </div>
       )}
       {cards.length <= 1 && <Card zIndex={-2}>No more cards</Card>}
+    </div>
     </div>
   )
 }
