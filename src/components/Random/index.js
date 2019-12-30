@@ -1,67 +1,73 @@
-import React, { useState } from 'react'
-import Swipeable from "react-swipy"
-import Button from "../Button"
-import Card from "../Card"
-import '../../App.css'
+import React, { Component } from 'react';
 
-const flexing = {
-  display: "flex",
-  justifyContent: "space-between",
+import Swipeable from 'react-swipy';
+
+import Card from '../Card';
+import Button from '../Button';
+
+const appStyles = {
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  minHeight: '100vh',
+  fontFamily: 'sans-serif',
+  overflow: 'hidden',
+};
+
+const wrapperStyles = {
+  position: 'relative',
+  width: '250px',
+  height: '250px',
+};
+const actionsStyles = {
+  display: 'flex',
+  justifyContent: 'space-between',
   marginTop: 12,
-  // position: "relative",
-  // top: "35rem",
-}
+};
 
-export default function Random(props) {
-  // const test = props.animals && props.animals[0]
-  //   ? props.animals[0].photos.map((elem, i) => {
-  //     return (
-  //       <ul key={i}>
-  //         <li>
-  //           <img src={elem.small} />
-  //         </li>
-  //       </ul>
-  //     )
-  //   })
-  //   : ""
+class Random extends Component {
+  state = {
+    cards: ['First', 'Second', 'Third'],
+  };
 
-  // const randomAnimals = props.animals.map((elem, i) => {
-  //   return (
-  //     <div key={i}>
-  //       <div>
-  //         {elem.photos.map((el, i) => {
-  //           return (
-  //             <img key={i} src={el.small} />
-  //           )
-  //         })}
-  //       </div>
-  //     </div>
-  //   )
-  // })
-  const [cards, setCards] = useState(["hassen", "this", "world", "is", "Horrible"])
-  const remove = () => {
-    setCards((cards) => (cards.slice(1, cards.length) ));
-  }
-  return (
-    <div className="wrapper">
-      {/* {randomAnimals} */}
-      {cards.length > 0 && (
-        <div className="wrapper">
-          <Swipeable
-            buttons={({ right, left }) => (
-              <div style={flexing}>
-                <Button onClick={left}>Reject</Button>
-                <Button onClick={right}>Accept</Button>
-              </div>
-            )}
-            onAfterSwipe={remove}
-          >
-            <Card>{cards[0]}</Card>
-          </Swipeable>
-          {cards.length > 1 && <Card zIndex={-1}>{cards[1]}</Card>}
+  remove = () =>
+    this.setState(({ cards }) => ({
+      cards: cards.slice(1, cards.length),
+    }));
+
+  render() {
+    const { cards } = this.state;
+
+    return (
+      <div style={appStyles}>
+        <div style={wrapperStyles}>
+          {cards.length > 0 && (
+            <div style={wrapperStyles}>
+              <Swipeable
+                buttons={({ right, left }) => (
+                  <div style={actionsStyles}>
+                    <Button onClick={left}>Reject</Button>
+                    <Button onClick={right}>Accept</Button>
+                  </div>
+                )}
+                onAfterSwipe={this.remove}
+              >
+                <Card>{cards[0]}</Card>
+              </Swipeable>
+              {cards.length > 1 && (
+                <Card zIndex={-1}>{cards[1]}</Card>
+              )}
+            </div>
+          )}
+          {cards.length <= 1 && (
+            <Card zIndex={-2}>No more cards</Card>
+          )}
         </div>
-      )}
-      {cards.length <= 1 && <Card zIndex={-2}>No more cards</Card>}
-    </div>
-  )
+      </div>
+    );
+  }
 }
+
+export default Random;
