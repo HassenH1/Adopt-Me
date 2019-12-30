@@ -26,7 +26,7 @@ const actionsStyles = {
 };
 
 const Random = () => {
-  const [data, setData] = useState('')
+  const [data, setData] = useState({})
 
   const fetchingData = async () => {
       const data = await fetch("http://localhost:8000/", {
@@ -37,8 +37,7 @@ const Random = () => {
         }
       })
       const dataJson = await data.json()
-      console.log(dataJson, "dude wtf")
-      setData({dataJson})
+      setData({...dataJson})
   }
 
   useEffect(() => {
@@ -52,9 +51,10 @@ const Random = () => {
 
   return (
     <div style={appStyles}>
-      {console.log(data.dataJson && data.dataJson.animals.length, "<--------")}
+      {console.log(data)}
+      {console.log(data.animals && data.animals.length, "<--------")}
       <div style={wrapperStyles}>
-        {data.dataJson && data.dataJson.animals.length > 0 && (
+        {data.animals && data.animals.length > 0 && (
           <div style={wrapperStyles}>
             <Swipeable
               buttons={({ right, left }) => (
@@ -65,17 +65,17 @@ const Random = () => {
               )}
               onAfterSwipe={remove}
             >
-              <Card>{data.dataJson.animals[0]}</Card>
-              {console.log(data.dataJson.animals[0], "<----is there something here?")}
+              <Card>{data.animals[0]}</Card>
+              {/* {console.log(data.animals[0], "<----is there something here?")} */}
             </Swipeable>
-            {data.dataJson && data.dataJson.animals.length > 1 && (
-              <Card zIndex={-1}>{data.dataJson.animals[1]}</Card>,
+            {data.animals && data.animals.length > 1 && (
+              <Card zIndex={-1}>{data.animals[1]}</Card>,
               console.log("does it even get here bro?")
             )}
           </div>
         )}
         {console.log("what about here?")}
-        {data.dataJson && data.dataJson.animals.length <= 1 && (
+        {data.animals && data.animals.length <= 1 && (
           console.log("and here?"),
           <Card zIndex={-2}>No more cards</Card>
         )}
