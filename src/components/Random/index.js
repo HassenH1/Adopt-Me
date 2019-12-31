@@ -81,13 +81,16 @@ const Random = () => {
                   <Button onClick={left}>Reject</Button>
                   </div>
                   <Button onClick={right}>Accept</Button>
+                  <div style={move}>
+                  <Button onClick={left}>Reject</Button>
+                  </div>
                 </div>
               )}
               onAfterSwipe={remove}
             >
               <Card>
                 {/* <img src={data.animals[0].photos[0].full} style={image}/> */}
-                <img src={data.animals[0].photos[0].full === undefined
+                <img src={data.animals[0].photos[0].full === "undefined"
                   ? "No Image available"
                   : data.animals[0].photos[0].full} style={image} />
                 <div style={nameAndAge}>
