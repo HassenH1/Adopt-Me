@@ -46,13 +46,13 @@ const Random = () => {
 
   const remove = () =>
     setData((data) => (
-      data.slice(1, data.length)
+      {data: data.slice(1, data.length)}
     ));
 
   return (
     <div style={appStyles}>
       {console.log(data)}
-      {console.log(data.animals && data.animals.length, "<--------")}
+      {console.log(data.animals && data.animals[0], "<--------")}
       <div style={wrapperStyles}>
         {data.animals && data.animals.length > 0 && (
           <div style={wrapperStyles}>
@@ -65,7 +65,7 @@ const Random = () => {
               )}
               onAfterSwipe={remove}
             >
-              <Card>{data.animals[0]}</Card>
+              <Card>{data.animals[0].type}</Card>
               {/* {console.log(data.animals[0], "<----is there something here?")} */}
             </Swipeable>
             {data.animals && data.animals.length > 1 && (
