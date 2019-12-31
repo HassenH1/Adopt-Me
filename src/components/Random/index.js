@@ -16,14 +16,23 @@ const appStyles = {
 
 const wrapperStyles = {
   position: 'relative',
-  width: '750px',
-  height: '750px',
+  width: '550px',
+  height: '550px',
 };
 const actionsStyles = {
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'space-around',
   marginTop: 12,
 };
+
+const image = {
+  height: "428px",
+  width: "548px",
+  position: "relative",
+  bottom: "50px",
+  borderTopLeftRadius: "15px",
+  borderTopRightRadius: "15px"
+}
 
 const Random = () => {
   const [data, setData] = useState({})
@@ -48,11 +57,6 @@ const Random = () => {
     setData((data) => (
       {animals: [...data.animals.slice(1, data.animals.length)]}
     ));
-    // console.log("does it get here?")
-    // let newData = data.animals.slice(1, data.animals.length)
-    // console.log("or here?")
-    // setData({...newData})
-    // console.log(data, "<---whats this new stff here?")
   }
   return (
     <div style={appStyles}>
@@ -69,7 +73,10 @@ const Random = () => {
               )}
               onAfterSwipe={remove}
             >
-              <Card>{data.animals[0].type}</Card>
+              <Card>
+                <img src={data.animals[0].photos[0].full} style={image}/>
+                {data.animals[0].name}
+              </Card>
             </Swipeable>
             {data.animals && data.animals.length > 1 && (
               <Card zIndex={-1}>{data.animals[1].type}</Card>
