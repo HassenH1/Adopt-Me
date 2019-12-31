@@ -16,22 +16,32 @@ const appStyles = {
 
 const wrapperStyles = {
   position: 'relative',
-  width: '550px',
-  height: '550px',
+  width: '440px',
+  height: '460px',
 };
 const actionsStyles = {
   display: 'flex',
-  justifyContent: 'space-around',
-  marginTop: 12,
+  // justifyContent: 'space-evenly',
+  justifyContent: 'center',
 };
 
 const image = {
-  height: "428px",
-  width: "548px",
+  height: "420px",
+  width: "438px",
   position: "relative",
   bottom: "50px",
   borderTopLeftRadius: "15px",
   borderTopRightRadius: "15px"
+}
+
+const nameAndAge = {
+  display: "flex",
+  position: "relative",
+  bottom: "2.5rem"
+}
+
+const move = {
+  marginRight: "1rem"
 }
 
 const Random = () => {
@@ -49,13 +59,13 @@ const Random = () => {
     setData({ ...dataJson })
   }
 
-  useEffect(() => { 
+  useEffect(() => {
     fetchingData()
   }, [])
 
   const remove = () => {
     setData((data) => (
-      {animals: [...data.animals.slice(1, data.animals.length)]}
+      { animals: [...data.animals.slice(1, data.animals.length)] }
     ));
   }
   return (
@@ -67,15 +77,22 @@ const Random = () => {
             <Swipeable
               buttons={({ right, left }) => (
                 <div style={actionsStyles}>
+                  <div style={move}>
                   <Button onClick={left}>Reject</Button>
+                  </div>
                   <Button onClick={right}>Accept</Button>
                 </div>
               )}
               onAfterSwipe={remove}
             >
               <Card>
-                <img src={data.animals[0].photos[0].full} style={image}/>
-                {data.animals[0].name}
+                {/* <img src={data.animals[0].photos[0].full} style={image}/> */}
+                <img src={data.animals[0].photos[0].full === undefined
+                  ? "No Image available"
+                  : data.animals[0].photos[0].full} style={image} />
+                <div style={nameAndAge}>
+                  <h3>{data.animals[0].name}, {data.animals[0].age}</h3>
+                </div>
               </Card>
             </Swipeable>
             {data.animals && data.animals.length > 1 && (
