@@ -29,31 +29,35 @@ const Random = () => {
   const [data, setData] = useState({})
 
   const fetchingData = async () => {
-      const data = await fetch("http://localhost:8000/", {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      const dataJson = await data.json()
-      setData({...dataJson})
+    const data = await fetch("http://localhost:8000/", {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    const dataJson = await data.json()
+    setData({ ...dataJson })
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     fetchingData()
   }, [])
 
-  const remove = () =>
+  const remove = () => {
     setData((data) => (
-      {data: data.slice(1, data.length)}
+      {animals: [...data.animals.slice(1, data.animals.length)]}
     ));
-
+    // console.log("does it get here?")
+    // let newData = data.animals.slice(1, data.animals.length)
+    // console.log("or here?")
+    // setData({...newData})
+    // console.log(data, "<---whats this new stff here?")
+  }
   return (
     <div style={appStyles}>
-      {console.log(data)}
-      {console.log(data.animals && data.animals[0], "<--------")}
       <div style={wrapperStyles}>
+        {console.log(data, "<----wahts in here")}
         {data.animals && data.animals.length > 0 && (
           <div style={wrapperStyles}>
             <Swipeable
@@ -66,17 +70,13 @@ const Random = () => {
               onAfterSwipe={remove}
             >
               <Card>{data.animals[0].type}</Card>
-              {/* {console.log(data.animals[0], "<----is there something here?")} */}
             </Swipeable>
             {data.animals && data.animals.length > 1 && (
-              <Card zIndex={-1}>{data.animals[1]}</Card>,
-              console.log("does it even get here bro?")
+              <Card zIndex={-1}>{data.animals[1].type}</Card>
             )}
           </div>
         )}
-        {console.log("what about here?")}
         {data.animals && data.animals.length <= 1 && (
-          console.log("and here?"),
           <Card zIndex={-2}>No more cards</Card>
         )}
       </div>
