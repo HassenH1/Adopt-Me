@@ -1,4 +1,5 @@
 import Random from './components/Random';
+import Showpage from './components/Showpage';
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 
@@ -30,7 +31,7 @@ function App() {
     <div>
       <Switch>
         <Route exact path='/' component={() => <Random data={data} remove={remove}/>}></Route>
-        <Route exact path='/animal/:id' ></Route> {/*Missing a component here */}
+        <Route exact path='/animal/:id' component={() => <Showpage />}></Route> 
       </Switch>
       {/* <Random /> */}
     </div>
