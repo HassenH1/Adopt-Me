@@ -21,13 +21,14 @@ const wrapperStyles = {
 };
 const actionsStyles = {
   display: 'flex',
-  // justifyContent: 'space-evenly',
   justifyContent: 'center',
 };
 
 const image = {
-  height: "420px",
+  height: "500px",
+  // height: "100%",
   width: "438px",
+  // width: "100%",
   position: "relative",
   bottom: "50px",
   borderTopLeftRadius: "15px",
@@ -37,15 +38,13 @@ const image = {
 const nameAndAge = {
   display: "flex",
   position: "relative",
-  bottom: "2.5rem"
+  bottom: "3.5rem",
+  fontFamily: "Lobster",
+  letterSpacing: "3px"
 }
 
 const move = {
   marginRight: "1rem"
-}
-
-const lefty = {
-  marginLeft: "1rem"
 }
 
 const Random = () => {
@@ -72,9 +71,7 @@ const Random = () => {
       { animals: [...data.animals.slice(1, data.animals.length)] }
     ));
   }
-  const reload = () => {
-    window.location.reload()
-  }
+
   return (
     <div style={appStyles}>
       <div style={wrapperStyles}>
@@ -85,12 +82,12 @@ const Random = () => {
               buttons={({ right, left }) => (
                 <div style={actionsStyles}>
                   <div style={move}>
-                    <Button onClick={left}>Reject</Button>
+                    <Button onClick={left}><i className="fas fa-times" style={{"fontSize": "30px"}}></i></Button>
                   </div>
-                  <Button onClick={right}>Accept</Button>
-                  <div style={lefty}>
+                  <Button onClick={right}><i className="far fa-grin-hearts" style={{"fontSize": "30px"}}></i></Button>
+                  {/* <div style={lefty}>
                     <Button onClick={reload}>Reload</Button>
-                  </div>
+                  </div> */}
                 </div>
               )}
               onAfterSwipe={remove}
@@ -99,10 +96,10 @@ const Random = () => {
                 {/* <img src={data.animals[0].photos[0].full} style={image}/> */}
                 {
                   data.animals && data.animals[0].photos.length === 0
-                    ? <div>
+                    ? <div style={move}>
                       No Image available
                       </div>
-                    : <img src={data.animals[0].photos[0].full} style={image} />
+                    : <a href="https://www.google.com"><img src={data.animals[0].photos[0].full} style={image} alt="animals"/></a>
                 }
                 {/* <img src={data.animals[0].photos[0].full === "undefined"
                   ? "No Image available"
