@@ -36,6 +36,5 @@ function App() {
     </div>
   )
 }
-{/* <Route exact path='/products/:id' render={() => <Showpage currentUser={this.state.currentUser} addToCart={this.addToCart} />} /> */}
 
 export default withRouter(App);

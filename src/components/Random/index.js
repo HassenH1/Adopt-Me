@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { NavLink, withRouter } from 'react-router-dom'
+
 import Swipeable from 'react-swipy';
 import Card from '../Card';
 import Button from '../Button';
@@ -50,9 +52,14 @@ const move = {
 
 const Random = (props) => {
 
+  const testing = (id) => {
+    console.log(id)
+  }
+
   return (
     <div style={appStyles}>
       <div style={wrapperStyles}>
+        {console.log(props.data)}
         {props.data.animals && props.data.animals.length > 0 && (
           <div style={wrapperStyles}>
             <Swipeable
@@ -72,7 +79,7 @@ const Random = (props) => {
                     ? <div style={move}>
                       No Image available
                       </div>
-                    : <a href="https://www.google.com"><img src={props.data.animals[0].photos[0].full} style={image} alt="animals"/></a>
+                    : <NavLink exact to={`/animal/${props.data.animals[0].id}`}><img src={props.data.animals[0].photos[0].full} style={image} alt="animals" onClick={() => testing(props.data.animals[0].id)}/></NavLink>
                 }
                 <div style={nameAndAge}>
                   <h3>{props.data.animals[0].name}, {props.data.animals[0].age}</h3>
@@ -92,4 +99,4 @@ const Random = (props) => {
   );
 }
 
-export default Random;
+export default withRouter(Random);
