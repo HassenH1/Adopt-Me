@@ -85,11 +85,11 @@ const Random = () => {
               buttons={({ right, left }) => (
                 <div style={actionsStyles}>
                   <div style={move}>
-                  <Button onClick={left}>Reject</Button>
+                    <Button onClick={left}>Reject</Button>
                   </div>
                   <Button onClick={right}>Accept</Button>
                   <div style={lefty}>
-                  <Button onClick={reload}>Reload</Button>
+                    <Button onClick={reload}>Reload</Button>
                   </div>
                 </div>
               )}
@@ -97,9 +97,16 @@ const Random = () => {
             >
               <Card>
                 {/* <img src={data.animals[0].photos[0].full} style={image}/> */}
-                <img src={data.animals[0].photos[0].full === "undefined"
+                {
+                  data.animals && data.animals[0].photos.length === 0
+                    ? <div>
+                      No Image available
+                      </div>
+                    : <img src={data.animals[0].photos[0].full} style={image} />
+                }
+                {/* <img src={data.animals[0].photos[0].full === "undefined"
                   ? "No Image available"
-                  : data.animals[0].photos[0].full} style={image} />
+                  : data.animals[0].photos[0].full} style={image} /> */}
                 <div style={nameAndAge}>
                   <h3>{data.animals[0].name}, {data.animals[0].age}</h3>
                 </div>
