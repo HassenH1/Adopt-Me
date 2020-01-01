@@ -44,6 +44,10 @@ const move = {
   marginRight: "1rem"
 }
 
+const lefty = {
+  marginLeft: "1rem"
+}
+
 const Random = () => {
   const [data, setData] = useState({})
 
@@ -68,6 +72,9 @@ const Random = () => {
       { animals: [...data.animals.slice(1, data.animals.length)] }
     ));
   }
+  const reload = () => {
+    window.location.reload()
+  }
   return (
     <div style={appStyles}>
       <div style={wrapperStyles}>
@@ -81,8 +88,8 @@ const Random = () => {
                   <Button onClick={left}>Reject</Button>
                   </div>
                   <Button onClick={right}>Accept</Button>
-                  <div style={move}>
-                  <Button onClick={left}>Reject</Button>
+                  <div style={lefty}>
+                  <Button onClick={reload}>Reload</Button>
                   </div>
                 </div>
               )}
