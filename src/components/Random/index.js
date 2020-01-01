@@ -30,8 +30,6 @@ const image = {
   width: "438px",
   position: "relative",
   top: "48px",
-  // borderTopLeftRadius: "15px",
-  // borderTopRightRadius: "15px"
   borderRadius: "10px"
 }
 
@@ -64,15 +62,11 @@ const Random = (props) => {
                     <Button onClick={left}><i className="fas fa-times" style={{"fontSize": "30px"}}></i></Button>
                   </div>
                   <Button onClick={right}><i className="far fa-grin-hearts" style={{"fontSize": "30px"}}></i></Button>
-                  {/* <div style={lefty}>
-                    <Button onClick={reload}>Reload</Button>
-                  </div> */}
                 </div>
               )}
               onAfterSwipe={props.remove}
             >
               <Card>
-                {/* <img src={data.animals[0].photos[0].full} style={image}/> */}
                 {
                   props.data.animals && props.data.animals[0].photos.length === 0
                     ? <div style={move}>
@@ -80,9 +74,6 @@ const Random = (props) => {
                       </div>
                     : <a href="https://www.google.com"><img src={props.data.animals[0].photos[0].full} style={image} alt="animals"/></a>
                 }
-                {/* <img src={data.animals[0].photos[0].full === "undefined"
-                  ? "No Image available"
-                  : data.animals[0].photos[0].full} style={image} /> */}
                 <div style={nameAndAge}>
                   <h3>{props.data.animals[0].name}, {props.data.animals[0].age}</h3>
                 </div>
@@ -101,12 +92,4 @@ const Random = (props) => {
   );
 }
 
-// function Random(props) {
-//   console.log(props.data.animals, "<----whats this")
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
 export default Random;
