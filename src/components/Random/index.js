@@ -26,9 +26,7 @@ const actionsStyles = {
 
 const image = {
   height: "500px",
-  // height: "100%",
   width: "438px",
-  // width: "100%",
   position: "relative",
   bottom: "50px",
   borderTopLeftRadius: "15px",
