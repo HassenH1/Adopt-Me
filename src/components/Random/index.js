@@ -54,6 +54,7 @@ const Random = (props) => {
 
   const testing = (id) => {
     console.log(id)
+    // props.history.push(`/animal/${id}`)
   }
 
   return (

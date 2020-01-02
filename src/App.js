@@ -42,7 +42,7 @@ function App() {
       } */}
       <Switch>
         <Route exact path='/' component={() => <Random data={data} remove={remove}/>}></Route>
-        <Route exact path='/animal/:id' component={() => <Showpage />}></Route> 
+        <Route exact path='/animal/:id' component={(props) => <Showpage {...props}/>}></Route> 
       </Switch>
     </div>
   )
