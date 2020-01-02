@@ -24,8 +24,6 @@ function App() {
   }, [])
 
   const remove = () => {
-    // console.log(data.animals, "<----------------------------------whats this?")
-    // console.log(data.animals.slice(0,1), "<----------------------------------whats this here?")
     setArray([...array, data.animals.slice(0,1)])
     setData((data) => (
       { animals: [...data.animals.slice(1, data.animals.length)] }
