@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 
 function App() {
   const [data, setData] = useState({})
+  const [array, setArray] = useState([])
 
   const fetchingData = async () => {
     const data = await fetch("http://localhost:8000/", {
@@ -23,17 +24,26 @@ function App() {
   }, [])
 
   const remove = () => {
+    // console.log(data.animals, "<----------------------------------whats this?")
+    // console.log(data.animals.slice(0,1), "<----------------------------------whats this here?")
+    setArray([...array, data.animals.slice(0,1)])
     setData((data) => (
       { animals: [...data.animals.slice(1, data.animals.length)] }
     ));
   }
   return (
     <div>
+      {/* {
+        array.map((elem, i) => {
+          return(elem.map((elem) => {
+            console.log(elem, "<-----------------------------------this is whats an array")
+          }))
+        })
+      } */}
       <Switch>
         <Route exact path='/' component={() => <Random data={data} remove={remove}/>}></Route>
         <Route exact path='/animal/:id' component={() => <Showpage />}></Route> 
       </Switch>
-      {/* <Random /> */}
     </div>
   )
 }

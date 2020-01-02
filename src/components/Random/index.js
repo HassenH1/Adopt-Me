@@ -59,7 +59,6 @@ const Random = (props) => {
   return (
     <div style={appStyles}>
       <div style={wrapperStyles}>
-        {console.log(props.data)}
         {props.data.animals && props.data.animals.length > 0 && (
           <div style={wrapperStyles}>
             <Swipeable
