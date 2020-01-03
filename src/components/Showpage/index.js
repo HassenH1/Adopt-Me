@@ -7,11 +7,12 @@ const wrapperStyles = { position: "relative", width: "250px", height: "250px", l
 
 export default function Showpage(props) {
   const [elem, setElem] = useState("")
-  const [index, setIndex] = useState(1)
+  const [index, setIndex] = useState(0)
 
   useEffect(() => {
+    const id = props.match.params.id
     const fetching = async () => {
-      await (await fetch(`http://localhost:8000/animal/${props.match.params.id}`, {
+      await (await fetch(`http://localhost:8000/animal/${id}`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -26,15 +27,16 @@ export default function Showpage(props) {
   return (
     <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw" }}>
       <div style={wrapperStyles}>
-        <Card style={{ overflow: "auto" }}>
+        <Card>
+          {console.log(elem.animal && elem.animal.photos[0])}
           <Gallery index={index} onRequestChange={i => {
-            setIndex(i)
+            setIndex(i);
           }}
           >
-            {console.log(elem.animal && elem.animal.photos, "<-----------------------")}
+            {console.log(elem.animal)}
             {elem.animal && elem.animal.photos.map((e, i) => {
-              return(
-                <GalleryImage src={e.full} key={i}/>
+              return (
+                <GalleryImage src={e.full} objectFit="contain" key={i} />
               )
             })}
           </Gallery>
