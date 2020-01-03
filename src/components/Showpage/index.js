@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card";
-import { Gallery, GalleryImage } from "react-gesture-gallery"
+
 
 const wrapperStyles = { position: "relative", width: "250px", height: "250px", left: "32rem", top: "10rem" };
 
+const main = {
+  backgroundColor: "#000",
+  overflow: "hidden",
+  position: "relative",
+}
+const swiper = {
+  display: "flex",
+  overflowx: "visible",
+  transitionProperty: "transform",
+  willChange: "transform",
+}
+const image = {
+  objectFit: "contain"
+}
 
 export default function Showpage(props) {
   const [elem, setElem] = useState("")
@@ -28,21 +42,18 @@ export default function Showpage(props) {
     <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw" }}>
       <div style={wrapperStyles}>
         <Card>
-          {console.log(elem.animal && elem.animal.photos[0])}
-          <div style={{ width: "50vw", height: "50vh"}}>
-            <Gallery 
-              index={index} 
-              onRequestChange={i => {
-              setIndex(i);
+          <div
+            style={main}
+            style={{
+              width: '700px',
+              height: '400px',
             }}
-            >
-              {console.log(elem.animal)}
-              {elem.animal && elem.animal.photos.map((e, i) => {
-                return (
-                  <GalleryImage src={e.full} objectFit="contain" key={i} />
-                )
+          >
+            <div style={swiper}>
+              {elem.animal && elem.animal.photos.map((src, i) => {
+                return <img key={i} src={src.full} width="50%" height="50%" style={image}/>;
               })}
-            </Gallery>
+            </div>
           </div>
           <h3>{elem.animal && elem.animal.name}</h3>
         </Card>
@@ -50,16 +61,3 @@ export default function Showpage(props) {
     </div>
   )
 }
-
-{/* <div style={{ background: "black", width: "100vw", height: "100vh" }}>
-      <Gallery---
-        index={index}-
-        onRequestChange={i => {-
-          setIndex(i);-
-        }}-
-      >-
-        {images.map(img => (
-          <GalleryImage objectFit="contain" key={img.src} src={img.src} />
-        ))}
-      </Gallery>
-    </div> */}
