@@ -29,20 +29,37 @@ export default function Showpage(props) {
       <div style={wrapperStyles}>
         <Card>
           {console.log(elem.animal && elem.animal.photos[0])}
-          <Gallery index={index} onRequestChange={i => {
-            setIndex(i);
-          }}
-          >
-            {console.log(elem.animal)}
-            {elem.animal && elem.animal.photos.map((e, i) => {
-              return (
-                <GalleryImage src={e.full} objectFit="contain" key={i} />
-              )
-            })}
-          </Gallery>
+          <div style={{ width: "50vw", height: "50vh"}}>
+            <Gallery 
+              index={index} 
+              onRequestChange={i => {
+              setIndex(i);
+            }}
+            >
+              {console.log(elem.animal)}
+              {elem.animal && elem.animal.photos.map((e, i) => {
+                return (
+                  <GalleryImage src={e.full} objectFit="contain" key={i} />
+                )
+              })}
+            </Gallery>
+          </div>
           <h3>{elem.animal && elem.animal.name}</h3>
         </Card>
       </div>
     </div>
   )
 }
+
+{/* <div style={{ background: "black", width: "100vw", height: "100vh" }}>
+      <Gallery---
+        index={index}-
+        onRequestChange={i => {-
+          setIndex(i);-
+        }}-
+      >-
+        {images.map(img => (
+          <GalleryImage objectFit="contain" key={img.src} src={img.src} />
+        ))}
+      </Gallery>
+    </div> */}
