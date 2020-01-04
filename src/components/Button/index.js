@@ -3,7 +3,7 @@ import React from "react";
 const buttonStyles = {
   // padding: "16px 24px",
   padding: "15px 24px",
-  background: "whitesmoke",
+  background: "white",
   cursor: "pointer",
   border: "none",
   borderRadius: "20%",

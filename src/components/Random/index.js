@@ -14,6 +14,7 @@ const appStyles = {
   minHeight: '100vh',
   fontFamily: 'sans-serif',
   overflow: 'hidden',
+  background: "whitesmoke"
 };
 
 const wrapperStyles = {
