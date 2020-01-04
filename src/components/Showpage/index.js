@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card";
+import Slider from "react-slick";
 
-
-const wrapperStyles = { position: "relative", width: "250px", height: "250px", left: "32rem", top: "10rem" };
-
-const main = {
-  backgroundColor: "#000",
-  overflow: "hidden",
+const wrapperStyles = {
   position: "relative",
-}
-const swiper = {
-  display: "flex",
-  overflowx: "visible",
-  transitionProperty: "transform",
-  willChange: "transform",
-}
-const image = {
-  objectFit: "contain"
+  width: "250px",
+  height: "250px",
+  left: "32rem",
+  top: "10rem"
+};
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
+
+const Image = {
+  height: "20rem",
+  width: "100%",
 }
 
 export default function Showpage(props) {
   const [elem, setElem] = useState("")
-  const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const id = props.match.params.id
@@ -38,25 +41,23 @@ export default function Showpage(props) {
     fetching()
   }, [])
 
+  const images = elem.animal && elem.animal.photos.map((e, i) => {
+    return (
+      <div key={i}>
+        <img src={e.full} style={Image} alt="animal"/>
+      </div>
+    )
+  })
+
   return (
     <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw" }}>
       <div style={wrapperStyles}>
         <Card>
-          <div
-            style={main}
-            style={{
-              width: '700px',
-              height: '400px',
-            }}
-          >
-            <div style={swiper}>
-              {elem.animal && elem.animal.photos.map((src, i) => {
-                return <img key={i} src={src.full} width="50%" height="50%" style={image}/>;
-              })}
-            </div>
-          </div>
           <h3>{elem.animal && elem.animal.name}</h3>
         </Card>
+        <Slider {...settings}>
+          {images}
+        </Slider>
       </div>
     </div>
   )

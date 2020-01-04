@@ -31,13 +31,6 @@ function App() {
   }
   return (
     <div>
-      {/* {
-        array.map((elem, i) => {
-          return(elem.map((elem) => {
-            console.log(elem, "<-----------------------------------this is whats an array")
-          }))
-        })
-      } */}
       <Switch>
         <Route exact path='/' component={() => <Random data={data} remove={remove}/>}></Route>
         <Route exact path='/animal/:id' component={(props) => <Showpage {...props}/>}></Route> 
