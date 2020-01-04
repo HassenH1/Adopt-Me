@@ -18,13 +18,14 @@ const appStyles = {
 
 const wrapperStyles = {
   position: 'relative',
-  width: '460px',
-  height: '520px',
+  width: '800px',
+  height: '720px',
 };
 const actionsStyles = {
   display: 'flex',
   justifyContent: 'center',
-
+  position: "relative",
+  right: "2rem"
 };
 
 const image = {

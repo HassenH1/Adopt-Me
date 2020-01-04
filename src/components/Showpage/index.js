@@ -39,18 +39,19 @@ export default function Showpage(props) {
 
   const images = elem.animal && elem.animal.photos.map((e, i) => {
     return (
-      <div key={i} style={{ width: "100vw", height: "100vh" }}>
+      <div key={i}>
         <img src={e.full} style={Image} alt="animal" />
       </div>
     )
   })
 
   return (
-    <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw" }}>
+    <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw", overflowX: "hidden"}}>
       <div style={wrapperStyles}>
         <Slider {...settings}>
           {images}
         </Slider>
+        {console.log(elem.animal)}
         <h3>{elem.animal && elem.animal.name}</h3>
       </div>
     </div>
