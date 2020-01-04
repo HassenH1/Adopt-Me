@@ -3,10 +3,6 @@ import Slider from "react-slick";
 
 const wrapperStyles = {
   position: "relative",
-  width: "250px",
-  height: "321px",
-  top: "10rem",
-  margin: "0 auto",
   textAlign: "center"
 };
 
@@ -18,8 +14,9 @@ const settings = {
 };
 
 const Image = {
-  height: "20rem",
-  width: "100%",
+  height: "35%",
+  width: "35%",
+  margin: "0 auto"
 }
 
 export default function Showpage(props) {
