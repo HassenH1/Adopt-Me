@@ -41,6 +41,7 @@ function Navbar(props) {
           : ""
       }
       <div style={logo}>Pick Me</div>
+      <div style={{position: "absolute", right: "1rem", cursor: "pointer"}}>History</div>
     </div>
   )
 }
