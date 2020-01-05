@@ -73,11 +73,11 @@ const Random = (props) => {
                   <Button onClick={right}><i className="far fa-grin-hearts" style={{ "fontSize": "30px" }}></i></Button>
                 </div>
               )}
-              onAfterSwipe={props.remove}
               limit={200}
               onSwipe={(both) => {
                 props.historyList(props.data.animals[0].name, both)
-              }} 
+              }}
+              onAfterSwipe={props.remove}
             >
               <Card>
                 {
