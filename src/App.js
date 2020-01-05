@@ -6,6 +6,8 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 
 function App() {
   const [data, setData] = useState({})
+  const [leftArray, setLeftArray] = useState([])
+  const [rightArray, setRightArray] = useState([])
 
   const fetchingData = async () => {
     const data = await fetch("http://localhost:8000/", {
@@ -29,19 +31,17 @@ function App() {
     ));
   }
 
-  const historyList = (left, right) => {
-    console.log(left, "<------------------left from App")
-    console.log(right, "<------------------right from App")
-    // direction === "left"
-    //   ? setLeftArray([...leftArray, pet])
-    //   : setRightArray([...rightArray, pet])
-    // console.log(leftArray, "<--------------------------left")
-    // console.log(rightArray, "<-------------------------right")
+  const historyList = (direction, pet) => {
+    console.log(direction, pet, "<------------------right from App")
+    direction === "left"
+      ? setLeftArray([...leftArray, pet])
+      : setRightArray([...rightArray, pet])
   }
 
   return (
     <div>
-      <Navbar data={data}/>
+      {console.log(leftArray, "<--------------------------left")}
+      <Navbar data={data} />
       <Switch>
         <Route exact path='/' component={() => <Random data={data} remove={remove} historyList={historyList} />}></Route>
         <Route exact path='/animal/:id' component={(props) => <Showpage {...props} />}></Route>

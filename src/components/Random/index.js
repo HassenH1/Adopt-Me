@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { NavLink, withRouter } from 'react-router-dom'
 
 import Swipeable from 'react-swipy';
@@ -53,13 +53,10 @@ const move = {
 }
 
 const Random = (props) => {
-  const [leftArray, setLeftArray] = useState([])
-  const [rightArray, setRightArray] = useState([])
 
   const testing = (id) => {
     props.history.push(`/animal/${id}`)
   }
-
   return (
     <div style={appStyles}>
       <div style={wrapperStyles}>
@@ -76,21 +73,14 @@ const Random = (props) => {
               )}
               limit={200}
               onSwipe={(direction) => {
-                console.log(direction, props.data.animals[0].name, "<-----------------------------------------------both")
-                // console.log(props.data.animals[0].name)
-                direction === "left"
-                  ? setLeftArray([props.data.animals[0].name])
-                  : setRightArray([props.data.animals[0].name])
-                  console.log(leftArray, "<--------------------------left from Random")
-                  console.log(rightArray, "<--------------------------right from Random")
-                  // props.historyList(leftArray, rightArray)
+                props.historyList(direction, props.data.animals[0].name)
               }}
               onAfterSwipe={props.remove}
             >
               <Card>
                 {
                   props.data.animals && props.data.animals[0].photos.length === 0
-                    ? <div style={{position: "relative", bottom:"3rem"}}>
+                    ? <div style={{ position: "relative", bottom: "3rem" }}>
                       No Image available
                       </div>
                     : <NavLink exact to={`/animal/${props.data.animals[0].id}`}><img src={props.data.animals[0].photos[0].full} style={image} alt="animals" onClick={() => testing(props.data.animals[0].id)} /></NavLink>
@@ -106,7 +96,7 @@ const Random = (props) => {
           </div>
         )}
         {props.data.animals && props.data.animals.length <= 1 && (
-          <Card zIndex={-2}><h1 style={{color: "black"}}>No more cards</h1></Card>
+          <Card zIndex={-2}><h1 style={{ color: "black" }}>No more cards</h1></Card>
         )}
       </div>
     </div>
