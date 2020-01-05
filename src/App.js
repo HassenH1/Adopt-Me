@@ -6,8 +6,6 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 
 function App() {
   const [data, setData] = useState({})
-  const [leftArray, setLeftArray] = useState([])
-  const [rightArray, setRightArray] = useState([])
 
   const fetchingData = async () => {
     const data = await fetch("http://localhost:8000/", {
@@ -31,8 +29,9 @@ function App() {
     ));
   }
 
-  const historyList = (pet, direction) => {
-    console.log(pet, "<------------------pet")
+  const historyList = (left, right) => {
+    console.log(left, "<------------------left from App")
+    console.log(right, "<------------------right from App")
     // direction === "left"
     //   ? setLeftArray([...leftArray, pet])
     //   : setRightArray([...rightArray, pet])

@@ -52,7 +52,7 @@ export default function Showpage(props) {
   })
 
   return (
-    <div style={{ padding: "0", margin: "0", height: "100vh", width: "100%", background: "whitesmoke", overflowX: "hidden" }}>
+    <div style={{ padding: "0", margin: "0", height: "92vh", width: "100%", background: "whitesmoke", overflowX: "hidden" }}>
       <div style={{width: "28rem", position: "relative", left: "35%"}}>
         <Slider {...settings}>
           {images}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavLink, withRouter } from 'react-router-dom'
 
 import Swipeable from 'react-swipy';
@@ -6,12 +6,11 @@ import Card from '../Card';
 import Button from '../Button';
 
 const appStyles = {
-  height: '40%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
-  minHeight: '100vh',
+  minHeight: '80vh',
   fontFamily: 'sans-serif',
   overflow: 'hidden',
   background: "whitesmoke"
@@ -54,6 +53,8 @@ const move = {
 }
 
 const Random = (props) => {
+  const [leftArray, setLeftArray] = useState([])
+  const [rightArray, setRightArray] = useState([])
 
   const testing = (id) => {
     props.history.push(`/animal/${id}`)
@@ -74,8 +75,15 @@ const Random = (props) => {
                 </div>
               )}
               limit={200}
-              onSwipe={(both) => {
-                props.historyList(props.data.animals[0].name, both)
+              onSwipe={(direction) => {
+                console.log(direction, props.data.animals[0].name, "<-----------------------------------------------both")
+                // console.log(props.data.animals[0].name)
+                direction === "left"
+                  ? setLeftArray([props.data.animals[0].name])
+                  : setRightArray([props.data.animals[0].name])
+                  console.log(leftArray, "<--------------------------left from Random")
+                  console.log(rightArray, "<--------------------------right from Random")
+                  // props.historyList(leftArray, rightArray)
               }}
               onAfterSwipe={props.remove}
             >
