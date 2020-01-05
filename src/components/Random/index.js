@@ -50,7 +50,7 @@ const nameAndAge = {
 
 const move = {
   marginRight: "1rem",
-  color: "black"
+  color: "black",
 }
 
 const Random = (props) => {
@@ -82,7 +82,7 @@ const Random = (props) => {
               <Card>
                 {
                   props.data.animals && props.data.animals[0].photos.length === 0
-                    ? <div style={move}>
+                    ? <div style={{position: "relative", bottom:"3rem"}}>
                       No Image available
                       </div>
                     : <NavLink exact to={`/animal/${props.data.animals[0].id}`}><img src={props.data.animals[0].photos[0].full} style={image} alt="animals" onClick={() => testing(props.data.animals[0].id)} /></NavLink>
@@ -98,7 +98,7 @@ const Random = (props) => {
           </div>
         )}
         {props.data.animals && props.data.animals.length <= 1 && (
-          <Card zIndex={-2}>No more cards</Card>
+          <Card zIndex={-2}><h1 style={{color: "black"}}>No more cards</h1></Card>
         )}
       </div>
     </div>

@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar data={data}/>
       <Switch>
         <Route exact path='/' component={() => <Random data={data} remove={remove} historyList={historyList} />}></Route>
         <Route exact path='/animal/:id' component={(props) => <Showpage {...props} />}></Route>

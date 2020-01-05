@@ -35,11 +35,12 @@ const A = {
 function Navbar(props) {
   return (
     <div style={navbar}>
-      {
+      {/* {
         <Route exact path="/animal/:id" />
-          ? <a style={A} onClick={() => props.history.go(-2)}><i className="fas fa-arrow-left"></i></a>
-          : ""
-      }
+          ? ""
+          : <a style={A} onClick={() => props.history.go(-2)}><i className="fas fa-arrow-left"></i></a>
+      } */}
+      {console.log(props)}
       <div style={logo}>Pick Me</div>
       <div style={{position: "absolute", right: "1rem", cursor: "pointer"}}>History</div>
     </div>
