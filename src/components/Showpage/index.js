@@ -17,15 +17,13 @@ const Image = {
   width: "35%",
   margin: "0 auto",
   position: "relative",
-  top: "1rem"
 }
 
 const info = {
   border: "1px solid black",
   width: "50rem",
-  height: "20rem",
   position: "relative",
-  top: "2rem",
+  bottom: "10rem",
   borderRadius: "10px"
 }
 
@@ -49,20 +47,18 @@ export default function Showpage(props) {
 
   const images = elem.animal && elem.animal.photos.map((e, i) => {
     return (
-      <div key={i}>
-        <img src={e.full} style={Image} alt="animal" />
-      </div>
+      <img src={e.full} alt="animal" style={Image} />
     )
   })
 
   return (
-    <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw", background: "whitesmoke", overflowX: "hidden" }}>
-      <div style={{ height: "10px", position: "relative", top: "10rem" }}>
+    <div style={{ padding: "0", margin: "0", height: "100vh", width: "100%", background: "whitesmoke", overflowX: "hidden" }}>
+      <div style={{width: "28rem", position: "relative", left: "35%"}}>
         <Slider {...settings}>
           {images}
         </Slider>
       </div>
-      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "absolute", top: "8rem", left: "50px", textAlign: "center", padding: "30px", background: "white" }}>
+      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "fixed", top: "8rem", left: "50px", textAlign: "center", padding: "30px", background: "white" }}>
         <h3>Dog Info</h3>
         <h4>Name: {elem.animal && elem.animal.name}</h4>
         <h4>Breed: {elem.animal && elem.animal.breeds.primary}</h4>
@@ -70,7 +66,7 @@ export default function Showpage(props) {
         <h4>Gender: {elem.animal && elem.animal.gender}</h4>
         <h4>Description: {elem.animal && elem.animal.description}</h4>
       </div>
-      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "absolute", top: "8rem", right: "70px", textAlign: "center", padding: "30px", background: "white" }}>
+      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "fixed", top: "8rem", right: "50px", textAlign: "center", padding: "30px", background: "white" }}>
         <h3>Adoption Contact</h3>
         <h4>Email: {elem.animal && elem.animal.contact.email}</h4>
         {
@@ -78,7 +74,6 @@ export default function Showpage(props) {
             ? <h4>Phone: No Number Available</h4>
             : <h4>Phone: {elem.animal && elem.animal.contact.phone}</h4>
         }
-        {/* <h4>Address: {elem.animal && elem.animal.contact.address}</h4> */}
         {
           elem.animal && elem.animal.contact.address.address1 ? <h4>Address: {elem.animal && elem.animal.contact.address.address1}, {elem.animal && elem.animal.contact.address.city}, {elem.animal && elem.animal.contact.address.state}, {elem.animal && elem.animal.contact.address.postcode}</h4>
             : elem.animal && elem.animal.contact.address.address2 ? <h4>Address: {elem.animal && elem.animal.contact.address1.address2}, {elem.animal && elem.animal.contact.address.city}, {elem.animal && elem.animal.contact.address.state}, {elem.animal && elem.animal.contact.address.postcode}</h4>
@@ -89,5 +84,3 @@ export default function Showpage(props) {
     </div>
   )
 }
-
-// this.props.history.goBack() //this will go to previous page
