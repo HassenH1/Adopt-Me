@@ -19,14 +19,15 @@ const appStyles = {
 
 const wrapperStyles = {
   position: 'relative',
-  width: '800px',
-  height: '720px',
+  width: '750px',
+  height: '820px',
 };
 const actionsStyles = {
   display: 'flex',
   justifyContent: 'center',
   position: "relative",
-  right: "2rem"
+  right: "0.5rem",
+  bottom: "6rem"
 };
 
 const image = {
@@ -67,9 +68,9 @@ const Random = (props) => {
               buttons={({ right, left }) => (
                 <div style={actionsStyles}>
                   <div style={move}>
-                    <Button onClick={left}><i className="fas fa-times" style={{"fontSize": "30px"}}></i></Button>
+                    <Button onClick={left}><i className="fas fa-times" style={{ "fontSize": "30px" }}></i></Button>
                   </div>
-                  <Button onClick={right}><i className="far fa-grin-hearts" style={{"fontSize": "30px"}}></i></Button>
+                  <Button onClick={right}><i className="far fa-grin-hearts" style={{ "fontSize": "30px" }}></i></Button>
                 </div>
               )}
               onAfterSwipe={props.remove}
@@ -80,7 +81,7 @@ const Random = (props) => {
                     ? <div style={move}>
                       No Image available
                       </div>
-                    : <NavLink exact to={`/animal/${props.data.animals[0].id}`}><img src={props.data.animals[0].photos[0].full} style={image} alt="animals" onClick={() => testing(props.data.animals[0].id)}/></NavLink>
+                    : <NavLink exact to={`/animal/${props.data.animals[0].id}`}><img src={props.data.animals[0].photos[0].full} style={image} alt="animals" onClick={() => testing(props.data.animals[0].id)} /></NavLink>
                 }
                 <div style={nameAndAge}>
                   <h3>{props.data.animals[0].name}, {props.data.animals[0].age}</h3>

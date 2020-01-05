@@ -17,7 +17,7 @@ const Image = {
   width: "35%",
   margin: "0 auto",
   position: "relative",
-  top: "5rem"
+  top: "1rem"
 }
 
 const info = {
@@ -57,12 +57,12 @@ export default function Showpage(props) {
 
   return (
     <div style={{ padding: "0", margin: "0", height: "100vh", width: "100vw", background: "whitesmoke", overflowX: "hidden" }}>
-      <div style={{ height: "10px" }}>
+      <div style={{ height: "10px", position: "relative", top: "10rem" }}>
         <Slider {...settings}>
           {images}
         </Slider>
       </div>
-      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "absolute", top: "6rem", left: "50px", textAlign: "center", padding: "30px" }}>
+      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "absolute", top: "8rem", left: "50px", textAlign: "center", padding: "30px", background: "white" }}>
         <h3>Dog Info</h3>
         <h4>Name: {elem.animal && elem.animal.name}</h4>
         <h4>Breed: {elem.animal && elem.animal.breeds.primary}</h4>
@@ -70,39 +70,24 @@ export default function Showpage(props) {
         <h4>Gender: {elem.animal && elem.animal.gender}</h4>
         <h4>Description: {elem.animal && elem.animal.description}</h4>
       </div>
-      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "absolute", top: "6rem", right: "70px", textAlign: "center", padding: "30px" }}>
+      <div style={{ border: "1px solid black", height: "30rem", width: "20rem", position: "absolute", top: "8rem", right: "70px", textAlign: "center", padding: "30px", background: "white" }}>
         <h3>Adoption Contact</h3>
         <h4>Email: {elem.animal && elem.animal.contact.email}</h4>
-        <h4>Phone: {elem.animal && elem.animal.contact.phone}</h4>
-        <h4>Address: {elem.animal && elem.animal.contact.address}</h4>
+        {
+          elem.animal && elem.animal.contact.phone === null
+            ? <h4>Phone: No Number Available</h4>
+            : <h4>Phone: {elem.animal && elem.animal.contact.phone}</h4>
+        }
+        {/* <h4>Address: {elem.animal && elem.animal.contact.address}</h4> */}
+        {
+          elem.animal && elem.animal.contact.address.address1 ? <h4>Address: {elem.animal && elem.animal.contact.address.address1}, {elem.animal && elem.animal.contact.address.city}, {elem.animal && elem.animal.contact.address.state}, {elem.animal && elem.animal.contact.address.postcode}</h4>
+            : elem.animal && elem.animal.contact.address.address2 ? <h4>Address: {elem.animal && elem.animal.contact.address1.address2}, {elem.animal && elem.animal.contact.address.city}, {elem.animal && elem.animal.contact.address.state}, {elem.animal && elem.animal.contact.address.postcode}</h4>
+              : <h4>no address Available</h4>
+        }
+        {console.log(elem.animal && elem.animal.contact)}
       </div>
-      {console.log(elem.animal)}
     </div>
   )
 }
 
-
-
-// id: 39717557
-// organization_id: "TX2228"
-// url: "https://www.petfinder.com/dog/ginger-adopted-39717557/nh/claremont/lifesavers-corp-tx2228/?referrer_id=c93b6d4c-91f8-4b73-8a19-c73c800d6ecd"
-// type: "Dog"
-// species: "Dog"
-// breeds: {primary: "Shepherd", secondary: null, mixed: true, unknown: false}
-// colors: {primary: "Red / Chestnut / Orange", secondary: null, tertiary: null}
-// age: "Baby"
-// gender: "Female"
-// size: "Medium"
-// coat: null
-// attributes: {spayed_neutered: true, house_trained: false, declawed: null, special_needs: false, shots_current: true}
-// environment: {children: true, dogs: true, cats: true}
-// tags: []
-// name: "Ginger - Adopted!"
-// description: "Ginger is a 5 month old female Shepherd/Hound mix (best guess) pup that currently weighs about 25lbs. She was found..."
-// photos: (3) [{…}, {…}, {…}]
-// status: "adopted"
-// status_changed_at: "2017-11-16T15:24:59+0000"
-// published_at: "2017-10-22T17:42:42+0000"
-// distance: null
-// contact: {email: "lifesaversapps@outlook.com", phone: "(903) 452-0526", address: {…}}
-// _links: {self: {…}, type: {…}, organization: {…}}
+// this.props.history.goBack() //this will go to previous page

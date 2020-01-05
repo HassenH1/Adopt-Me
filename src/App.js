@@ -1,5 +1,6 @@
 import Random from './components/Random';
 import Showpage from './components/Showpage';
+import Navbar from './components/Navbar';
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom'
 
@@ -24,16 +25,17 @@ function App() {
   }, [])
 
   const remove = () => {
-    setArray([...array, data.animals.slice(0,1)])
+    setArray([...array, data.animals.slice(0, 1)])
     setData((data) => (
       { animals: [...data.animals.slice(1, data.animals.length)] }
     ));
   }
   return (
     <div>
+      <Navbar />
       <Switch>
-        <Route exact path='/' component={() => <Random data={data} remove={remove}/>}></Route>
-        <Route exact path='/animal/:id' component={(props) => <Showpage {...props}/>}></Route> 
+        <Route exact path='/' component={() => <Random data={data} remove={remove} />}></Route>
+        <Route exact path='/animal/:id' component={(props) => <Showpage {...props} />}></Route>
       </Switch>
     </div>
   )
