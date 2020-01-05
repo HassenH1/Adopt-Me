@@ -72,10 +72,10 @@ const Random = (props) => {
                 </div>
               )}
               limit={200}
+              onAfterSwipe={props.remove}
               onSwipe={(direction) => {
                 props.historyList(direction, props.data.animals[0].name)
               }}
-              onAfterSwipe={props.remove}
             >
               <Card>
                 {
